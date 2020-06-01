@@ -32,7 +32,7 @@
               </th>
             </thead>
             <tbody>
-              <tr *ngFor='let student of students | batch: nameSearch: emailSearch: indexSearch'>
+              <tr *ngFor='let student of students | filter: nameSearch: emailSearch: indexSearch'>
                 <td> {{student.id}}</td>
                 <td> {{student.name}}</td>
                 <td> {{student.email}}</td>
