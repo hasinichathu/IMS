@@ -10,7 +10,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
-  declarations: [DashboardComponent, StudentListComponent, ProfileComponent],
+  declarations: [
+    DashboardComponent, 
+    StudentListComponent, 
+    ProfileComponent
+  ],
   imports: [
     CommonModule,
     CompanyLayoutRoutingModule,

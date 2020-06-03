@@ -26,7 +26,7 @@ export const STUDENTROUTES: RouteInfo[] = [
 export const COMPANYROUTES: RouteInfo[] = [
   { path: '/company/dashboard',         title: 'Dashboard',         icon: 'nc-bank',      class: '' },
   { path: '/company/Students',          title: 'Selected Students', icon: 'nc-diamond',   class: '' },
-  { path: '/company/Students',          title: 'Selected Students', icon: 'nc-diamond',   class: '' },
+  { path: '/company/Profile',          title: 'Profile', icon: 'nc-diamond',   class: '' },
 
 ];
 @Component({

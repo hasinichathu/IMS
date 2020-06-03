@@ -10,7 +10,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
-  declarations: [DashboardComponent, SelectedStudentsComponent],
+  declarations: [
+    DashboardComponent, 
+    SelectedStudentsComponent
+  ],
   imports: [
     CommonModule,
     StudentLayoutRoutingModule,
