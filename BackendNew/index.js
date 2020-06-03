@@ -5,9 +5,11 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const mysql = require("mysql");
 const debug = require("debug")("http");
+const jwt = require("jsonwebtoken");
 
 // Import Routes
 const studentRoutes = require("./routes/students.js");
+const authenticationRoutes = require("./routes/authentication.js");
 
 // Import database connection
 const connection = require("./models/database.js");
@@ -45,5 +47,22 @@ app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
 
+// Authenticate teh Token
+authenticateUser = (req, res, next) => {
+  const autheHeader = req.headers["authorization"];
+  const token = autheHeader && autheHeader.split(" ")[1];
+  if (token == null) return res.status(401).send();
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).send();
+    }
+
+    req.user = user;
+    next();
+  });
+};
+
 // Routing
-app.use("/students", studentRoutes);
+app.use("/students", authenticateUser, studentRoutes);
+app.use("/login", authenticationRoutes);

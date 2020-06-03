@@ -97,3 +97,36 @@ FROM
 WHERE
     S.BatchId = B.BatchId
     AND S.StudentId = ?
+    
+-- Get a student by username and password
+SELECT
+    IndexNumber as Id,
+    RoleName as Role,
+    FullName as Name
+FROM
+    Student
+WHERE
+    indexNumber = ?
+    AND password = ? 
+
+-- Get a company by company id and password
+SELECT
+    companyId as Id,
+    RoleName as Role,
+    Name
+FROM
+    Company
+WHERE
+    companyId = ?
+    AND password = ? 
+    
+-- Get an admin by admin id and password
+SELECT
+    AdminId as Id,
+    RoleName as Role,
+    Name
+FROM
+    Admin
+WHERE
+    AdminId = ?
+    AND password = ?
