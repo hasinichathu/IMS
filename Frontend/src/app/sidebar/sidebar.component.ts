@@ -40,7 +40,7 @@ export class SidebarComponent implements OnInit {
 
   public menuItems: any[];
   ngOnInit(): void {
-    this.userType=this.loginService.getUserType(localStorage.getItem("username"));
+    this.userType=this.loginService.getUserType(localStorage.getItem("currentUser"));
     
     if(this.userType=="Student"){
       this.menuItems = STUDENTROUTES.filter(menuItem => menuItem);
