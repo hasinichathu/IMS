@@ -27,13 +27,17 @@ export class LoginComponent implements OnInit {
       // this.sendNotification1();
       return;
     }
-    // localStorage.setItem('username', this.username);
     this.userType = this.loginService.getUserType(this.username);
     console.log("inside student login component" + this.userType + "this.userType");
+    
     this.authService.login(this.username, this.password, this.userType)
       .subscribe(
         data => {
           console.log('Observer got a next value: ' + data);
+          ////temporary items
+          localStorage.setItem('userId', this.username);
+          localStorage.setItem('userType', this.userType);
+          ///////////////////
           if(data==true && this.userType=="Student"){
             this.router.navigate(['/student/dashboard']);
           }else if(data==true && this.userType=="Admin"){

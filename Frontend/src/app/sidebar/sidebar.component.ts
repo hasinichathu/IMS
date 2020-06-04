@@ -26,7 +26,7 @@ export const STUDENTROUTES: RouteInfo[] = [
 export const COMPANYROUTES: RouteInfo[] = [
   { path: '/company/dashboard',         title: 'Dashboard',         icon: 'nc-bank',      class: '' },
   { path: '/company/Students',          title: 'Selected Students', icon: 'nc-diamond',   class: '' },
-  { path: '/company/Profile',          title: 'Profile', icon: 'nc-diamond',   class: '' },
+  { path: '/company/Profile',           title: 'Profile',           icon: 'nc-diamond',   class: '' },
 
 ];
 @Component({
@@ -40,13 +40,17 @@ export class SidebarComponent implements OnInit {
 
   public menuItems: any[];
   ngOnInit(): void {
-    this.userType=this.loginService.getUserType(localStorage.getItem("currentUser"));
-    
+    ////temporary variable
+    this.userType=localStorage.getItem("userType");
+    ////////////////////////
     if(this.userType=="Student"){
+      console.log("inside sidebar Student");
       this.menuItems = STUDENTROUTES.filter(menuItem => menuItem);
     }else if(this.userType=="Admin"){
+      console.log("inside sidebar admin");
       this.menuItems = ADMINROUTES.filter(menuItem => menuItem);
     }else if(this.userType=="Company"){
+      console.log("inside sidebar comapny");
       this.menuItems = COMPANYROUTES.filter(menuItem => menuItem);
     }else{
       
