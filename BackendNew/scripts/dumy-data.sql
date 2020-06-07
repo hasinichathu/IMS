@@ -409,9 +409,55 @@ VALUES
         "yashod"
     );
 
+INSERT INTO
+    Student (
+        IndexNumber,
+        CreatedBy,
+        RoleName,
+        FullName,
+        NameWithInitials,
+        PhoneNumber,
+        Sem1GPA,
+        Sem2GPA,
+        Sem3GPA,
+        Sem4GPA,
+        SGPA,
+        Email,
+        PreferedArea1,
+        PreferedArea2,
+        PreferedArea3,
+        Degree,
+        Password
+    )
+VALUES
+    (
+        "164120F",
+        'kasun',
+        'Student',
+        "Chamodi Sandeepani",
+        "SANDEEPANI K.G.C.",
+        0716931384,
+        3.89,
+        3.78,
+        4.03,
+        3.57,
+        3.72,
+        "chamodisandeepani@gmail.com",
+        "UI/UX",
+        "Networking",
+        "QA Engineering",
+        "IT",
+        "chamodi"
+    );
+
 /*
  Updated student has batch
  */
+INSERT INTO
+    Student_Has_Batch(BatchId, IndexNumber, CV, DateOfStart)
+VALUES
+    ("batch16", "164120F", "cv", null);
+
 INSERT INTO
     Student_Has_Batch(BatchId, IndexNumber, CV, DateOfStart)
 VALUES
@@ -431,6 +477,11 @@ INSERT INTO
     Student_Has_Batch(BatchId, IndexNumber, CV, DateOfStart)
 VALUES
     ("batch17", "164106T", "cv", DATE '2020-1-17');
+
+INSERT INTO
+    Student_Has_Batch(BatchId, IndexNumber, CV, DateOfStart)
+VALUES
+    ("batch16", "164106T", "cv", DATE '2020-1-17');
 
 /*
  Add 8 student select company as dummy data
@@ -474,6 +525,21 @@ INSERT INTO
     Student_Select_Company (BatchId, IndexNumber, CompanyId, IsSelected)
 VALUES
     ("batch17", "164106T", 'wso2', 1);
+
+INSERT INTO
+    Student_Select_Company (BatchId, IndexNumber, CompanyId, IsSelected)
+VALUES
+    ("batch17", "164106T", 'virtusa', 0);
+
+INSERT INTO
+    Student_Select_Company (BatchId, IndexNumber, CompanyId, IsSelected)
+VALUES
+    ("batch16", "164106T", 'wso2', 0);
+
+INSERT INTO
+    Student_Select_Company (BatchId, IndexNumber, CompanyId, IsSelected)
+VALUES
+    ("batch16", "164106T", 'virtusa', 1);
 
 /*
  Add monthly report dummy data
