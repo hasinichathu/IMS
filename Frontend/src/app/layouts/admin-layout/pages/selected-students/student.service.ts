@@ -11,7 +11,7 @@ export class StudentService {
 
   // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' }
   getAllStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>('//localhost:8080/student/students')
+    return this.http.get<Student[]>('//localhost:8080/student/')
   }
 }
 
