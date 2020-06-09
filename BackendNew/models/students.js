@@ -604,7 +604,7 @@ exports.getStudentById = (studentId, sendStudent) => {
                             for (let batch of batchesMap.keys()) {
                               var val = batchesMap.get(batch);
                               var cv;
-                              var stratDate;
+                              var startDate;
                               var selectedCompany;
                               val.forEach(value => {
                                 if (value.cv) {
@@ -772,15 +772,138 @@ exports.getStudentByIdAndBatch = (studentId, batchId, sendStudent) => {
   });
 };
 
-exports.createBasicStudent = (student, callback) => {
-  var sqlString = "INSERT INTO student SET ?";
-  sql.query(sqlString, student, (err, result) => {
+exports.createBasicStudent = (student, studentHasBatch, isCreated) => {
+  var studentSql = "INSERT INTO student SET ?";
+  var studentHasBatchSql = "INSERT INTO Student_has_batch SET ?";
+  sql.query(studentSql, student, (err, result) => {
     if (err) {
       console.log("error: ", err);
-      callback(err, null);
+      isCreated(err, null);
     } else {
       console.log("created student: ", { id: result.insertId, ...student });
-      callback(null, { data: result });
+      sql.query(studentHasBatchSql, studentHasBatch, (err, result) => {
+        if (err) {
+          console.log("error: ", err);
+          isCreated(err, null);
+        } else {
+          isCreated(null, { data: "Inserted" });
+        }
+      });
+    }
+  });
+};
+
+exports.updateStudent = (student, isUpdated) => {
+  var studentSql = `
+    UPDATE 
+      Student 
+    SET 
+      email = ?, 
+      fullName = ?, 
+      nameWithInitials = ?,
+      phoneNumber = ?,
+      Sem1GPA = ?,
+      Sem2GPA = ?,
+      Sem3GPA = ?,
+      Sem4GPA = ?,
+      SGPA = ?,
+      PreferedArea1 = ?,
+      PreferedArea2 = ?,
+      PreferedArea3 = ?
+    WHERE
+      IndexNumber = ?`;
+  sql.query(
+    studentSql,
+    [
+      student.email,
+      student.fullName,
+      student.nameWithInitials,
+      student.phoneNumber,
+      student.Sem1GPA,
+      student.Sem2GPA,
+      student.Sem3GPA,
+      student.Sem4GPA,
+      student.SGPA,
+      student.PreferedArea1,
+      student.PreferedArea2,
+      student.PreferedArea3,
+      student.indexNumber
+    ],
+    (err, result) => {
+      if (err) {
+        console.log("error: ", err);
+        isUpdated(err, null);
+      } else {
+        isUpdated(null, { data: "Updated" });
+      }
+    }
+  );
+};
+
+exports.updateStudentHasBatch = (student, isUpdated) => {
+  var studentSql = `
+    UPDATE 
+      Student_has_batch 
+    SET 
+      CV = ?, 
+      DateOfStart = ?
+    WHERE
+      IndexNumber = ?
+      AND BatchId = ?`;
+  sql.query(
+    studentSql,
+    [student.cv, student.dateOfStart, student.indexNumber, student.batchId],
+    (err, result) => {
+      if (err) {
+        console.log("error: ", err);
+        isUpdated(err, null);
+      } else {
+        isUpdated(null, { data: "Updated" });
+      }
+    }
+  );
+};
+
+exports.updatedStudentSelectCompany = (student, isUpdated) => {
+  var studentSql = `
+  INSERT IGNORE INTO Student_select_company
+    (BatchId, IndexNumber, CompanyId)
+  VALUES
+    (?, ?, ?)`;
+  sql.query(
+    studentSql,
+    [student.batchId, student.indexNumber, student.companyId],
+    (err, result) => {
+      if (err) {
+        console.log("error: ", err);
+        isUpdated(err, null);
+      } else {
+        isUpdated(null, { data: "Updated" });
+      }
+    }
+  );
+};
+
+exports.getStudentCreater = (studentId, sendStudentCreater) => {
+  var sqlString = "SELECT CreatedBy FROM Student WHERE IndexNumber=?";
+  sql.query(sqlString, studentId, (err, result) => {
+    if (err) {
+      console.log("error: ", err);
+      sendStudentCreater(err, null);
+    } else {
+      sendStudentCreater(null, { creater: result[0].CreatedBy });
+    }
+  });
+};
+
+exports.getStudentPassword = (studentId, sendStudentCreater) => {
+  var sqlString = "SELECT Password FROM Student WHERE IndexNumber=?";
+  sql.query(sqlString, studentId, (err, result) => {
+    if (err) {
+      console.log("error: ", err);
+      sendStudentCreater(err, null);
+    } else {
+      sendStudentCreater(null, { password: result[0].Password });
     }
   });
 };
@@ -795,4 +918,40 @@ exports.getStudntByUserNamePassword = (studentId, password, callback) => {
       callback(null, { data: result });
     }
   });
+};
+
+// Basic student model.
+exports.BasicStudent = function(student) {
+  this.createdBy = student.createdBy;
+  this.roleName = "Student";
+  this.email = student.email;
+  this.nameWithInitials = student.nameWithInitials;
+  this.indexNumber = student.indexNumber;
+  this.password = student.password;
+};
+
+// Student model.
+exports.Student = function(student) {
+  this.createdBy = student.createdBy;
+  this.roleName = "Student";
+  this.email = student.email;
+  this.fullName = student.fullName;
+  this.nameWithInitials = student.nameWithInitials;
+  this.indexNumber = student.indexNumber;
+  this.password = student.password;
+  this.phoneNumber = student.telephoneNumber;
+  this.Sem1GPA = student.gpa.first_sem;
+  this.Sem2GPA = student.gpa.second_sem;
+  this.Sem3GPA = student.gpa.third_sem;
+  this.Sem4GPA = student.gpa.fourth_sem;
+  this.SGPA = student.gpa.SGPA;
+  this.PreferedArea1 = student.PreferedArea1;
+  this.PreferedArea2 = student.PreferedArea2;
+  this.PreferedArea3 = student.PreferedArea3;
+};
+
+// Student has batch model.
+exports.StudentHasBatch = function(studentHasBatch) {
+  this.batchId = studentHasBatch.batchId;
+  this.indexNumber = studentHasBatch.indexNumber;
 };

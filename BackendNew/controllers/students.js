@@ -1,6 +1,7 @@
 const students = require("../models/students");
 const companies = require("../models/company");
 
+// Get all students.
 exports.getStudents = (req, res) => {
   var isSelected = req.query.isSelected;
   var company = req.query.company;
@@ -79,7 +80,7 @@ exports.getStudents = (req, res) => {
   }
 };
 
-//get students based on index number
+// Get students based on index number.
 exports.getStudent = (req, res) => {
   var studentId = req.params.studentId;
   var batchId = req.query.batch;
@@ -108,6 +109,7 @@ exports.getStudent = (req, res) => {
   }
 };
 
+// Create a student.
 exports.createBasicStudent = (req, res) => {
   // Validate request
   if (!req.body) {
@@ -147,21 +149,25 @@ exports.createBasicStudent = (req, res) => {
     });
   }
 
+  console.log(req.body);
   // Create a student
-  const student = new BasicStudent({
-    batchId: req.body.batchId,
+  const student = new students.BasicStudent({
     createdBy: req.body.createdBy,
-    studentId: req.body.studentId,
     email: req.body.email,
     nameWithInitials: req.body.nameWithInitials,
     indexNumber: req.body.indexNumber,
     password: req.body.password
   });
 
-  students.createBasicStudent(student, (err, result) => {
+  const studentHasBatch = new students.StudentHasBatch({
+    batchId: req.body.batchId,
+    indexNumber: req.body.indexNumber
+  });
+
+  students.createBasicStudent(student, studentHasBatch, (err, result) => {
     if (err) {
       console.error("Error :" + err);
-      res.status(404);
+      res.status(400).send();
     } else {
       console.log("Get Student control function");
       res.status(200);
@@ -170,13 +176,90 @@ exports.createBasicStudent = (req, res) => {
   });
 };
 
-const BasicStudent = function(student) {
-  this.batchId = student.batchId;
-  this.createdBy = student.createdBy;
-  this.roleId = 3;
-  this.studentId = student.studentId;
-  this.email = student.email;
-  this.nameWithInitials = student.nameWithInitials;
-  this.indexNumber = student.indexNumber;
-  this.password = student.password;
+// Update student information.
+exports.updateStudent = (req, res) => {
+  var batch = req.query.batch;
+  if (batch) {
+    updateStudentInfo(req, (err, result) => {
+      if (err) {
+        res.status(400).send();
+      } else {
+        updateStudentHasBatchInfo(req, (err, result) => {
+          if (err) {
+            res.status(400).send();
+          } else {
+            updateStudentSelectCompanyInfo(req, (err, result) => {
+              if (err) {
+                res.status(400).send();
+              } else {
+                res.status(200).send({ message: "ok" });
+              }
+            });
+          }
+        });
+      }
+    });
+  } else {
+    res.status(400).send();
+  }
+};
+
+const updateStudentInfo = (req, isUpdated) => {
+  var studentId = req.params.studentId;
+  const student = new students.Student({
+    email: req.body.email,
+    fullName: req.body.email,
+    nameWithInitials: req.body.nameWithInitials,
+    indexNumber: studentId,
+    telephoneNumber: req.body.telephoneNumber,
+    gpa: req.body.gpa,
+    PreferedArea1: req.body.PreferedArea1,
+    PreferedArea2: req.body.PreferedArea2,
+    PreferedArea3: req.body.PreferedArea3
+  });
+  students.updateStudent(student, (err, result) => {
+    if (err) {
+      isUpdated(err, null);
+    } else {
+      isUpdated(null, result);
+    }
+  });
+};
+
+const updateStudentHasBatchInfo = (req, isUpdated) => {
+  var studentId = req.params.studentId;
+  var batch = req.query.batch;
+  const student = {
+    cv: req.body.cv,
+    dateOfStart: req.body.startDate,
+    indexNumber: studentId,
+    batchId: batch
+  };
+  students.updateStudentHasBatch(student, (err, result) => {
+    if (err) {
+      isUpdated(err, null);
+    } else {
+      isUpdated(null, result);
+    }
+  });
+};
+
+const updateStudentSelectCompanyInfo = (req, isUpdated) => {
+  var studentId = req.params.studentId;
+  var batch = req.query.batch;
+  var error;
+  req.body.companies.forEach(value => {
+    var student = {
+      batchId: batch,
+      indexNumber: studentId,
+      companyId: value
+    };
+    students.updatedStudentSelectCompany(student, (err, result) => {
+      if (err) {
+        error = err;
+        isUpdated(error, null);
+      }
+    });
+  });
+  isUpdated(null, { message: "updated" });
 };
