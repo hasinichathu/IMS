@@ -29,11 +29,12 @@ export class LoginService {
 
     //check if id belongs to a admin.
     //if id contains "-a" user is an admin.
-    var adminCheck = /^[A-Za-z]-a$/;
+    var adminCheck = /^\w*-a/;
 
     if(studentCheck.test(id)){
       return "Student"
     }else if(adminCheck.test(id)){
+      console.log("is admin");
       return "Admin";
     }
     return "Company";

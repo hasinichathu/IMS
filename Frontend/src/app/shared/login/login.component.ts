@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.userType = this.loginService.getUserType(this.username);
-    console.log("inside student login component" + this.userType + "this.userType");
+    console.log("inside login component" + this.userType + "this.userType");
     
     this.authService.login(this.username, this.password, this.userType)
       .subscribe(
