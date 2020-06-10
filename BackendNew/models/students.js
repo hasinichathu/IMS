@@ -920,6 +920,29 @@ exports.getStudntByUserNamePassword = (studentId, password, callback) => {
   });
 };
 
+exports.removeStudent = (studentId, isRemoved) => {
+  var sqlString = "DELETE FROM Student WHERE IndexNumber = ?";
+  sql.query(sqlString, [studentId], (err, result) => {
+    if (err) {
+      isRemoved(err, null);
+    } else {
+      isRemoved(null, { data: result });
+    }
+  });
+};
+
+exports.removeStudentHasBatch = (studentId, batchId, isRemoved) => {
+  var sqlString =
+    "DELETE FROM Student_has_batch WHERE IndexNumber = ? AND BatchId = ? AND CV IS NULL AND DateOfStart IS NULL";
+  sql.query(sqlString, [studentId, batchId], (err, result) => {
+    if (err) {
+      isRemoved(err, null);
+    } else {
+      isRemoved(null, { data: result });
+    }
+  });
+};
+
 // Basic student model.
 exports.BasicStudent = function(student) {
   this.createdBy = student.createdBy;
