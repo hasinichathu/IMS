@@ -47,7 +47,7 @@ app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
 
-// Authenticate teh Token
+// Authenticate the Token
 authenticateUser = (req, res, next) => {
   const autheHeader = req.headers["authorization"];
   const token = autheHeader && autheHeader.split(" ")[1];
