@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,14 +23,14 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string, type: String) {
-    return this.http.post<any>('//localhost:8080/login', {
+    return this.http.post<any>(`${environment.apiUrl}/login`, {
       "userName": username,
       "password": password,
       // "type": type
     }).pipe(map(
         user => {
           // login successful if there's a jwt token in the response
-          if (user || user.token) {
+          if (user || user.accessToken) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);
@@ -50,8 +51,7 @@ export class AuthenticationService {
 }
 
 export class User {
-  id: number;
-  username: string;
-  password: string;
-  token?: string;
+  //accessToken is essential where as refreshToken is optional
+  accessToken: string;
+  refreshToken?: string;
 }
