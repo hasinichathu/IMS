@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from './student.service';
-import { Student} from 'src/app/layouts/admin-layout/models/student.model';
+import { Student } from 'src/app/layouts/admin-layout/models/student.model';
 
 @Component({
   selector: 'app-selected-students',
@@ -9,14 +9,22 @@ import { Student} from 'src/app/layouts/admin-layout/models/student.model';
 })
 export class SelectedStudentsComponent implements OnInit {
   students: Student[];
-  nameSearch: string="";
-  emailSearch: string="";
-  indexSearch: string="";
+  nameSearch: string = "";
+  emailSearch: string = "";
+  indexSearch: string = "";
+  batchSearch: string = "";
   constructor(private stuService: StudentService) { }
 
   ngOnInit(): void {
     this.stuService.getAllStudents().subscribe(data => {
       this.students = data;
     });
+  }
+
+  clearSearch() {
+    this.nameSearch = "";
+    this.emailSearch = "";
+    this.indexSearch = "";
+    this.batchSearch = "";
   }
 }

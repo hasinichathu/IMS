@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userType = this.loginService.getUserType(localStorage.getItem("currentUser"));
+    this.userType = localStorage.getItem("userType");
 
     if (this.userType == "Student") {
       this.listTitles = STUDENTROUTES.filter(listTitle => listTitle);
