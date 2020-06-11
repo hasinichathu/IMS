@@ -8,13 +8,13 @@ export class StudentFilter implements PipeTransform {
   transform(items: Array<any>, nameSearch: string, emailSearch: string, indexSearch: string) {
     if (items && items.length) {
       return items.filter(item => {
-        if (nameSearch && item.name.toString().toLowerCase().indexOf(nameSearch.toLowerCase()) === -1) {
+        if (nameSearch && item.NameWithInitials.toString().toLowerCase().indexOf(nameSearch.toLowerCase()) === -1) {
           return false;
         }
-        if (emailSearch && item.email.toLowerCase().indexOf(emailSearch.toLowerCase()) === -1) {
+        if (emailSearch && item.Email.toLowerCase().indexOf(emailSearch.toLowerCase()) === -1) {
           return false;
         }
-        if (indexSearch && item.id.toLowerCase().indexOf(indexSearch.toLowerCase()) === -1) {
+        if (indexSearch && item.IndexNumber.toLowerCase().indexOf(indexSearch.toLowerCase()) === -1) {
           return false;
         }
         return true;

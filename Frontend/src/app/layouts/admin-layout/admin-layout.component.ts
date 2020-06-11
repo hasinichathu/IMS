@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 import { Router } from '@angular/router';
-
+import { User } from './models/user.model';
 
 @Component({
   selector: 'app-admin-layout',
@@ -14,21 +14,8 @@ export class AdminLayoutComponent implements OnInit {
 
   constructor( private router: Router,private authenticationService: AuthenticationService ) {}
 
-  // logout() {
-  //     this.authenticationService.logout();
-  //     this.router.navigate(['/login']);
-  // }
   ngOnInit(): void {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
-  // ngOnDestroy() {
-  //   this.currentUser.unsubscribe();
-  // }
   
-}
-export class User {
-  id: number;
-  username: string;
-  password: string;
-  token?: string;
 }

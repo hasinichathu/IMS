@@ -11,10 +11,8 @@ export class StudentService {
   students : Student[];
   constructor(private http: HttpClient) { }
 
-  // const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' }
   getAllStudents(): Observable<Student[]> {
-    console.log("inside getall students");
-    return this.http.get<Student[]>(`${environment.apiUrl}/students/`)
+    return this.http.get<Student[]>(`${environment.apiUrl}/students`, {params: {batch:"batch16", isSelected: "true"}} )
   }
 }
 

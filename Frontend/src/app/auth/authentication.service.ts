@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { User } from '../layouts/admin-layout/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,8 +51,3 @@ export class AuthenticationService {
   }
 }
 
-export class User {
-  //accessToken is essential where as refreshToken is optional
-  accessToken: string;
-  refreshToken?: string;
-}

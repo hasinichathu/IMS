@@ -4,11 +4,9 @@
       <div class="card-header">
         <h4 class="card-title"> Selected Student List</h4>
         <div>
-          Name : <input type="text" [(ngModel)]="nameSearch">
-
-          Email : <input type="text" [(ngModel)]="emailSearch">
-
           Index : <input type="text" [(ngModel)]="indexSearch">
+          Name : <input type="text" [(ngModel)]="nameSearch">
+          Email : <input type="text" [(ngModel)]="emailSearch">         
         </div>
       </div>
       <div class="card-body">
@@ -16,28 +14,36 @@
           <table class="table">
             <thead class=" text-primary">
               <th>
-                Index
+                IndexNumber
               </th>
               <th>
-                Name
+                NameWithInitials
+              </th>
+              <th>
+                PhoneNumber
+              </th>
+              <th>
+                SGPA
+              </th>
+              <th>
+                BatchId
+              </th>
+              <th>
+                CompanyName
               </th>
               <th>
                 Email
               </th>
-              <th>
-                Password
-              </th>
-              <th>
-                Role
-              </th>
             </thead>
             <tbody>
               <tr *ngFor='let student of students | filter: nameSearch: emailSearch: indexSearch'>
-                <td> {{student.id}}</td>
-                <td> {{student.name}}</td>
-                <td> {{student.email}}</td>
-                <td> {{student.password}}</td>
-                <td> {{student.role}}</td>
+                <td> {{student.IndexNumber}}</td>
+                <td> {{student.NameWithInitials}}</td>
+                <td> {{student.PhoneNumber}}</td>
+                <td> {{student.SGPA}}</td>
+                <td> {{student.BatchId}}</td>
+                <td> {{student.CompanyName}}</td>
+                <td> {{student.Email}}</td>
               </tr>
             </tbody>
           </table>
