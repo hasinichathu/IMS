@@ -1,7 +1,7 @@
 export class BasicStudent {
     indexNumber: string;
     FullName: string;
-    NameWithInitials: string;
+    nameWithInitials: string;
     PhoneNumber : number;
     Email: string;
     Sem1GPA : number;
