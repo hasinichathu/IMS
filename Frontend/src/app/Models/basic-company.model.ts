@@ -6,7 +6,7 @@ export class BasicCompany {
     location:string;
     numberOfvacancies:number;
     filledVacancies: number;
-    Website: string;
+    website: string;
     contactPersonName: string;
     contactPersonphoneNumber: string;
     contactPersonemail:string;
