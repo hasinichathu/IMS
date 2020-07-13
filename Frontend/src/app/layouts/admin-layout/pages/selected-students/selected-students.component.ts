@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from './student.service';
+import { StudentService } from '../../../../Services/student.service';
 import { Student } from 'src/app/layouts/admin-layout/models/student.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { Student } from 'src/app/layouts/admin-layout/models/student.model';
 })
 export class SelectedStudentsComponent implements OnInit {
   students: Student[];
+  batchId : String;
   nameSearch: string = "";
   emailSearch: string = "";
   indexSearch: string = "";
@@ -16,7 +17,7 @@ export class SelectedStudentsComponent implements OnInit {
   constructor(private stuService: StudentService) { }
 
   ngOnInit(): void {
-    this.stuService.getAllStudents().subscribe(data => {
+    this.stuService.getSelectedStudentsInBatch(this.batchId).subscribe(data => {
       this.students = data;
     });
   }
