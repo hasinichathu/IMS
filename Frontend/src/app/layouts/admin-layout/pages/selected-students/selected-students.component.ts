@@ -9,7 +9,7 @@ import { Student } from 'src/app/layouts/admin-layout/models/student.model';
 })
 export class SelectedStudentsComponent implements OnInit {
   students: Student[];
-  batchId : String;
+  batchId : String = "batch16";
   nameSearch: string = "";
   emailSearch: string = "";
   indexSearch: string = "";

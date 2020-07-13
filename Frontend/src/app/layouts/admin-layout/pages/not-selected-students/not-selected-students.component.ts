@@ -8,7 +8,7 @@ import { StudentService } from '../../../../Services/student.service';
 })
 export class NotSelectedStudentsComponent implements OnInit {
   students : Student[];
-  batchId : String;
+  batchId : String = "batch16";
   constructor(private stuService : StudentService) { }
 
   ngOnInit(): void {

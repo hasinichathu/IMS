@@ -10,15 +10,15 @@ export class StudentService {
   students : Student[];
   constructor(private http: HttpClient) { }
   getSelectedStudentsInBatch(batch:String): Observable<Student[]> {
-    return this.http.get<Student[]>(`${environment.apiUrl}/students`, {params: {batch:"batch16", isSelected: "true"}} )
+    return this.http.get<Student[]>(`${environment.apiUrl}/students`, {params: {batch:`${batch}`, isSelected: "true"}} )
   }
 
   getNotSelectedStudentsInBatch(batch:String): Observable<Student[]> {
-    return this.http.get<Student[]>(`${environment.apiUrl}/students`, {params: {batch:"batch16", isSelected: "false"}} )
+    return this.http.get<Student[]>(`${environment.apiUrl}/students`, {params: {batch:`${batch}`, isSelected: "false"}} )
   }
 
   getSelectedStudentsInCompany(companyName:String,batch:String): Observable<Student[]> {
-    return this.http.get<Student[]>(`${environment.apiUrl}/students`, {params: {batch:"batch16", isSelected: "true", companyName:`companyName`}} )
+    return this.http.get<Student[]>(`${environment.apiUrl}/students`, {params: {batch:`${batch}`, isSelected: "true", companyName:`${companyName}`}} )
   }
 }
 
