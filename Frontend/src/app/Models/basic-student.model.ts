@@ -3,7 +3,7 @@ export class BasicStudent {
     fullName: string;
     nameWithInitials: string;
     PhoneNumber : number;
-    Email: string;
+    email: string;
     Sem1GPA : number;
     Sem2GP : number;
     Sem3GPA : number;
