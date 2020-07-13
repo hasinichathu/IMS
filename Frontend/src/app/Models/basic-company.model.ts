@@ -8,6 +8,6 @@ export class BasicCompany {
     filledVacancies: number;
     website: string;
     contactPersonName: string;
-    contactPersonphoneNumber: string;
+    contactPersonPhoneNumber: string;
     contactPersonemail:string;
 }
