@@ -1,6 +1,6 @@
 export class BasicStudent {
     indexNumber: string;
-    FullName: string;
+    fullName: string;
     nameWithInitials: string;
     PhoneNumber : number;
     Email: string;
