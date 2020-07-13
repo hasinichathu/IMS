@@ -1,5 +1,5 @@
 export class BasicStudent {
-    IndexNumber: string;
+    indexNumber: string;
     FullName: string;
     NameWithInitials: string;
     PhoneNumber : number;
