@@ -9,5 +9,5 @@ export class BasicCompany {
     website: string;
     contactPersonName: string;
     contactPersonPhoneNumber: string;
-    contactPersonemail:string;
+    contactPersonEmail: string;
 }
