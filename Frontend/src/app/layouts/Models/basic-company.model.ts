@@ -2,7 +2,7 @@ export class BasicCompany {
     userName: string;
     companyName: string;
     phoneNumber: number;
-    email:string;
+    email: string;
     location:string;
     numberOfvacancies:number;
     filledVacancies: number;
