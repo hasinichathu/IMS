@@ -11,6 +11,6 @@ export class BasicStudent {
     SGPA : number;
     batchId: string;
     isSelected: string;
-    CompanyId: string;
+    companyId: string;
     companyName: string;
 }
