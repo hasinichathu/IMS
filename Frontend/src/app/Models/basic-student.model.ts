@@ -4,7 +4,7 @@ export class BasicStudent {
     nameWithInitials: string;
     phoneNumber: number;
     email: string;
-    Sem1GPA : number;
+    sem1GPA: number;
     sem2GPA: number;
     sem3GPA: number;
     sem4GPA: number;
