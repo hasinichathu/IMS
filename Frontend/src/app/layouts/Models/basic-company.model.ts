@@ -3,7 +3,7 @@ export class BasicCompany {
     companyName: string;
     phoneNumber: number;
     email: string;
-    location:string;
+    location: string;
     numberOfvacancies:number;
     filledVacancies: number;
     Website: string;
