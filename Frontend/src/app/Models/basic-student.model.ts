@@ -5,7 +5,7 @@ export class BasicStudent {
     phoneNumber: number;
     email: string;
     Sem1GPA : number;
-    Sem2GP : number;
+    sem2GPA: number;
     sem3GPA: number;
     sem4GPA: number;
     SGPA: number;
