@@ -6,7 +6,7 @@ export class BasicStudent {
     email: string;
     Sem1GPA : number;
     Sem2GP : number;
-    Sem3GPA : number;
+    sem3GPA: number;
     sem4GPA: number;
     SGPA : number;
     batchId: string;
