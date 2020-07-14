@@ -9,7 +9,7 @@ export class BasicStudent {
     Sem3GPA : number;
     Sem4GPA : number;
     SGPA : number;
-    BatchId: string;
+    batchId: string;
     IsSelected: string;
     CompanyId: string;
     CompanyName: string;
