@@ -7,7 +7,7 @@ export class BasicStudent {
     Sem1GPA : number;
     Sem2GP : number;
     Sem3GPA : number;
-    Sem4GPA : number;
+    sem4GPA: number;
     SGPA : number;
     batchId: string;
     isSelected: string;
