@@ -1,6 +1,6 @@
 export class BasicCompany {
     userName: string;
-    companyName:string;
+    companyName: string;
     phoneNumber: number;
     email:string;
     location:string;
