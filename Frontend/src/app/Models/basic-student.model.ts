@@ -12,5 +12,5 @@ export class BasicStudent {
     batchId: string;
     isSelected: string;
     CompanyId: string;
-    CompanyName: string;
+    companyName: string;
 }
