@@ -4,7 +4,7 @@ export class BasicCompany {
     phoneNumber: number;
     email: string;
     location: string;
-    numberOfvacancies:number;
+    numberOfVacancies: number;
     filledVacancies: number;
     website: string;
     contactPersonName: string;
