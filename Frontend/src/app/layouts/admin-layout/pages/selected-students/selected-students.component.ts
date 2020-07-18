@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../../../../Services/student.service';
-import { Student } from 'src/app/layouts/admin-layout/models/student.model';
+import { StudentService } from '../../../../services/student.service';
+import { BasicStudent } from '../../../../models/basic-student.model';
 
 @Component({
   selector: 'app-selected-students',
@@ -8,7 +8,7 @@ import { Student } from 'src/app/layouts/admin-layout/models/student.model';
   styleUrls: ['./selected-students.component.scss']
 })
 export class SelectedStudentsComponent implements OnInit {
-  students: Student[];
+  students: BasicStudent[];
   batchId : String = "batch16";
   nameSearch: string = "";
   emailSearch: string = "";
