@@ -15,6 +15,7 @@ import { UserComponent } from './pages/user/user.component';
 import { RequestsComponent } from './pages/requests/requests.component';
 import { ManageAdminsComponent } from './pages/manage-admins/manage-admins.component';
 import { StudentFilter } from 'src/app/filters/StudentFilter.pipes';
+import { BatchComponent } from './pages/batch/batch.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { StudentFilter } from 'src/app/filters/StudentFilter.pipes';
     UserComponent,
     RequestsComponent,
     ManageAdminsComponent,
-    StudentFilter
+    StudentFilter,
+    BatchComponent
   ],
   imports: [
     CommonModule,
