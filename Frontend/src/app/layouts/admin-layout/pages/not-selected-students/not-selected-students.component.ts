@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BasicStudent } from '../../../../models/basic-student.model';
+import { StudentService } from '../../../../services/student.service';
 
 @Component({
   selector: 'app-not-selected-students',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./not-selected-students.component.scss']
 })
 export class NotSelectedStudentsComponent implements OnInit {
-
-  constructor() { }
+  students : BasicStudent[];
+  batchId : String = "batch16";
+  constructor(private stuService : StudentService) { }
 
   ngOnInit(): void {
+    this.stuService.getNotSelectedStudentsInBatch(this.batchId).subscribe(data=>{
+      this.students = data;
+    });
   }
 
 }

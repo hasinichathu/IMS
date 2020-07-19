@@ -6,7 +6,7 @@ export interface RouteInfo {
   title: string;
   icon: string;
   class: string;
-}
+} 
 
 export const ADMINROUTES: RouteInfo[] = [
   { path: '/admin/dashboard',           title: 'Dashboard',         icon: 'nc-bank',      class: '' },
