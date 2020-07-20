@@ -12,6 +12,7 @@ export class BatchComponent implements OnInit {
 
   ngOnInit(): void {
     this.batchService.getAllBatches().subscribe(data=>{
+      console.log(data);
       this.batches=data;
     });
   }

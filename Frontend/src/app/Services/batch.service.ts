@@ -14,4 +14,7 @@ export class BatchService {
   getAllBatches(){
     return this.http.get<Batch[]>(`${environment.apiUrl}/batches`);
   }
+  AddBatch(id:string, des:string){
+
+  }
 }

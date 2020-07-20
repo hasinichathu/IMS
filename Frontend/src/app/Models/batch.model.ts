@@ -1,8 +1,9 @@
 export class Batch {
-    batchId:number;
-    Description:string;
-    year:string;
-    startDate:string;
-    endDate:string;
-    allowedCompanyCount:number;
+    
+    BatchId:string;
+    CreatedBy:string;
+    Year:number;
+    StartDate:string;
+    EndDate:string;
+    CompanyCount:number;
 }

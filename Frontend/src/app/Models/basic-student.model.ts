@@ -1,16 +1,16 @@
 export class BasicStudent {
-    indexNumber:string;
-    fullName:string;
-    nameWithInitials:string;
-    phoneNumber:number;
-    email:string;
-    sem1GPA:number;
-    sem2GPA:number;
-    sem3GPA:number;
-    sem4GPA:number;
+    IndexNumber:string;
+    FullName:string;
+    NameWithInitials:string;
+    PhoneNumber:number;
+    Email:string;
+    Sem1GPA:number;
+    Sem2GPA:number;
+    Sem3GPA:number;
+    Sem4GPA:number;
     SGPA:number;
-    batchId:string;
-    isSelected:string;
-    companyId:string;
-    companyName:string;
+    BatchId:string;
+    IsSelected:string;
+    CompanyId:string;
+    CompanyName:string;
 }
