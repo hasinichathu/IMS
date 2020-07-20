@@ -11,6 +11,6 @@ export class CompanyService {
   comapnies: BasicCompany[];
   constructor(private http:HttpClient) { }
   getAllCompanyDetails(){
-    return this.http.get<BasicCompany[]>(`${environment.apiUrl}/companies`)
+    return this.http.get<BasicCompany[]>(`${environment.apiUrl}/companies`);
   }
 }

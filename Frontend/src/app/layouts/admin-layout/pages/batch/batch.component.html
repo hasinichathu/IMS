@@ -1,1 +1,46 @@
-<p>batch works!</p>
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Batch details</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Batch Id
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Year 
+                </th>
+                <th >
+                    Start Date
+                </th>
+                <th >
+                    End Date
+                </th>
+                <th >
+                    Allowed Company Count
+                </th>
+              </thead>
+              <tbody>
+                <tr *ngFor ='let batch of batches'>
+                  <td>{{batch.batchId}}</td>
+                  <td>{{batch.Description}}</td>
+                  <td>{{batch.year}}</td>
+                  <td>{{batch.startDate}}</td>
+                  <td>{{batch.endDate}}</td>
+                  <td>{{batch.allowedCompanyCount}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

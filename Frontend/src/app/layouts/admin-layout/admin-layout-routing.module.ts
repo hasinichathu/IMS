@@ -9,6 +9,7 @@ import { MonthlyReportsComponent } from './pages/monthly-reports/monthly-reports
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { RequestsComponent } from './pages/requests/requests.component';
 import { ManageAdminsComponent } from './pages/manage-admins/manage-admins.component';
+import { BatchComponent } from './pages/batch/batch.component';
 
 
 const AdminLayoutRoutes: Routes = [
@@ -21,6 +22,7 @@ const AdminLayoutRoutes: Routes = [
     { path: 'feedback',             component: FeedbackComponent },
     { path: 'requests',             component: RequestsComponent },
     { path: 'manageAdmins',         component: ManageAdminsComponent },
+    { path: 'batch',                component: BatchComponent},
 ];
 
 @NgModule({
