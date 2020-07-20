@@ -7,13 +7,12 @@ import { BatchService } from '../../../../services/batch.service';
   styleUrls: ['./batch.component.scss']
 })
 export class BatchComponent implements OnInit {
-  batches:Batch[]; 
+  batches:Batch["data"]; 
   constructor(private batchService:BatchService) { }
 
   ngOnInit(): void {
-    this.batchService.getAllBatches().subscribe(data=>{
-      console.log(data);
-      this.batches=data;
+    this.batchService.getAllBatches().subscribe(res=>{
+      this.batches=res.data;
     });
   }
 

@@ -1,47 +1,73 @@
 <div class="row">
     <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          <h4 class="card-title"> Batch details</h4>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"> Batch details</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                Batch Id
+                            </th>
+                            <th>
+                                Year
+                            </th>
+                            <th>
+                                Start Date
+                            </th>
+                            <th>
+                                End Date
+                            </th>
+                            <th>
+                                Allowed Company Count
+                            </th>
+                            <th>
+                                Created By
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let batch of batches">
+                                <td>{{batch.BatchId}}</td>
+                                <td>{{batch.Year}}</td>
+                                <td>{{batch.StartDate}}</td>
+                                <td>{{batch.EndDate}}</td>
+                                <td>{{batch.CompanyCount}}</td>
+                                <td>{{batch.CreatedBy}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table">
-              <thead class=" text-primary">
-                <th>
-                  Batch Id
-                </th>         
-                <th>
-                    Year 
-                </th>
-                <th >
-                    Start Date
-                </th>
-                <th >
-                    End Date
-                </th>
-                <th >
-                    Allowed Company Count
-                </th>
-                <th>
-                    Created By
-                </th>
-              </thead>
-              <tbody>
-                <tr *ngFor ="let batch of batches.data">
-                  <td>{{batch.BatchId}}</td>
-                  <td>{{batch.BatchId}}</td>
-                  <td>{{batch.Year}}</td>
-                  <td>{{batch.StartDate}}</td>
-                  <td>{{batch.EndDate}}</td>
-                  <td>{{batch.CompanyCount}}</td>
-                  <td>{{batch.CreatedBy}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-user">
+            <div class="card-header">
+                <h5 class="card-title">Create a batch</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-5 pr-1">
+                            <div class="form-group">
+                                <label>Company (disabled)</label>
+                                <input type="text" class="form-control" disabled="" placeholder="Company"
+                                    value="Creative Code Inc.">
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

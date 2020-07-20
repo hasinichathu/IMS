@@ -12,7 +12,7 @@ export class BatchService {
   constructor(private http:HttpClient) { }
 
   getAllBatches(){
-    return this.http.get<Batch[]>(`${environment.apiUrl}/batches`);
+    return this.http.get<Batch>(`${environment.apiUrl}/batches`);
   }
   AddBatch(id:string, des:string){
 
