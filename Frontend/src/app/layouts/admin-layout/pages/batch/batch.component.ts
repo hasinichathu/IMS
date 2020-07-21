@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Batch } from '../../../../models/batch.model';
 import { BatchService } from '../../../../services/batch.service';
+
 @Component({
   selector: 'app-batch',
   templateUrl: './batch.component.html',
