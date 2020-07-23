@@ -9,14 +9,15 @@ export interface RouteInfo {
 } 
 
 export const ADMINROUTES: RouteInfo[] = [
-  { path: '/admin/dashboard',           title: 'Dashboard',         icon: 'nc-bank',      class: '' },
-  { path: '/admin/selectedStudents',    title: 'Selected Students', icon: 'nc-diamond',   class: '' },
-  { path: '/admin/notSelectedStudents', title: 'Remaining Students',icon: 'nc-diamond',   class: '' },
-  { path: '/admin/organizations',       title: 'organizations',     icon: 'nc-diamond',   class: '' },
-  { path: '/admin/monthlyReports',      title: 'monthly Reports',   icon: 'nc-diamond',   class: '' },
-  { path: '/admin/feedback',            title: 'feedback',          icon: 'nc-diamond',   class: '' },
-  { path: '/admin/requests',            title: 'requests',          icon:'nc-diamond',    class: '' },
-  { path: '/admin/manageAdmins',        title: 'Manage Admins',     icon:'nc-pin-3',      class: '' },
+  { path: '/admin/dashboard',           title: 'Dashboard',         icon: 'nc-palette',   class: '' },
+  { path: '/admin/selectedStudents',    title: 'Selected Students', icon: 'nc-satisfied', class: '' },
+  { path: '/admin/notSelectedStudents', title: 'Remaining Students',icon: 'nc-user-run',  class: '' },
+  { path: '/admin/organizations',       title: 'Organizations',     icon: 'nc-globe-2',   class: '' },
+  { path: '/admin/monthlyReports',      title: 'Monthly Reports',   icon: 'nc-paper',     class: '' },
+  { path: '/admin/feedback',            title: 'Feedback',          icon: 'nc-trophy',    class: '' },
+  { path: '/admin/requests',            title: 'Requests',          icon: 'nc-simple-add',class: '' },
+  { path: '/admin/manageAdmins',        title: 'Manage Admins',     icon: 'nc-atom',      class: '' },
+  { path: '/admin/batch',               title: 'Batch management',  icon: 'nc-tag-content',class: '' },
   { path: '/admin/user',                title: 'User Profile',      icon: 'nc-single-02', class: '' },
   ];
 export const STUDENTROUTES: RouteInfo[] = [
